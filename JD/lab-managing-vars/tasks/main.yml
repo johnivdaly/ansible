@@ -1,0 +1,21 @@
+---
+- name: Install Apache and Maria DB and starts the service
+  hosts: "{{ ansible_fqdn }}"
+
+  tasks:
+    - name: Required packages are installed and up to date
+      yum:
+        name:
+          - "{{ ansible_local.custom.packages.web_package }}"
+          - "{{ ansible_local.custom.packages.db_package }}"
+        state: latest
+
+    - name: Start the DB Service
+      service:
+        name: "{{ ansible_local.custom.services.db_service }}"
+        state: running
+
+    - name: Start the Web Service
+      service:
+        name: "{{ ansible_local.custom.services.web_service }}"
+        state: running
