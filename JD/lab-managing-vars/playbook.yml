@@ -37,5 +37,5 @@
   tasks:
     - name: Ensure the webserver is reachable
       uri:
-        url: "http://{{ ansible_fqdn }}"
+        url: "http://serverb.lab.example.com"
         status_code: 200
