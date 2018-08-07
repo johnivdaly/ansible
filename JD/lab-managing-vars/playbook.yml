@@ -6,6 +6,10 @@
     rule: http
 
   tasks:
+    - name: Install Dependent services
+      include:  tasks/main.yml
+      include_vars: vars/main.yml
+
     - name: Required packages are installed and up to date
       yum:
         name:
