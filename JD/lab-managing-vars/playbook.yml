@@ -20,7 +20,7 @@
 
     - name: Web content is in place
       copy:
-        content: "<h>{{ ansible_fqdn }} ({{ ansible_ip }}) has been customized by Ansible</h>"
+        content: "<h>{{ ansible_fqdn }} ({{ ansible_eth0.ipv4.address }}) has been customized by Ansible</h>"
         dest: /var/www/html/index.html
 
     - name: The firewall port for {{ rule }} is open
