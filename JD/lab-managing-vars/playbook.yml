@@ -3,7 +3,7 @@
   hosts: lamp
   vars:
     firewall: firewalld
-    rule: 80
+    rule: http
 
   tasks:
     - name: Required packages are installed and up to date
@@ -20,7 +20,7 @@
 
     - name: Web content is in place
       copy:
-        content: "Example web content"
+        content: "<h>{{ ansible_fqdn }} ({{ ansible_ip }}) has been customized by Ansible</h>"
         dest: /var/www/html/index.html
 
     - name: The firewall port for {{ rule }} is open
