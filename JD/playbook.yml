@@ -11,12 +11,12 @@
 
   tasks:
     - name: Required packages are installed and up to date
-    yum:
-    name:
-      - "{{ web_pkg }}"
-      - "{{ firewall_pkg }}"
-      - "{{ python_pkg }}"
-    state: latest
+      yum:
+        name:
+          - "{{ web_pkg }}"
+          - "{{ firewall_pkg }}"
+          - "{{ python_pkg }}"
+        state: latest
 
     - name: The {{ firewall_service }} service is started and enabled
       service:
