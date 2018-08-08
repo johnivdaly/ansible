@@ -1,0 +1,8 @@
+---
+- name: use student.myenv role playbook
+  hosts: all
+  user: devops
+  become: true
+
+  roles:
+    - student.myenv

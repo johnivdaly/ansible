@@ -1,2 +1,12 @@
 ---
 # vars file for student.myenv
+
+myenv_user: ""
+
+myenv_packages:
+  - git
+  - tree
+  - vim-enhanced
+
+profile_src: media/system-logo-icon.png
+profile_dest: ~/profile.png

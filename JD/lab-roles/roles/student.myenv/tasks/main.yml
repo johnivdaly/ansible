@@ -1,2 +1,13 @@
 ---
 # tasks file for student.myenv
+
+- name: Install Packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ myenv_packages }}"
+
+- name: Deploy Profile Picture
+      copy:
+        src: "{{ profile_src }}"
+        dest: "{{ profile_dest }}"
