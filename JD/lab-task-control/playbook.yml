@@ -1,0 +1,19 @@
+---
+- hosts: webservers
+
+  tasks:
+    - name: Include Install Packages
+      include:
+        install_packages.yml
+      vars:
+        memory: 256
+        ssl_package: mod_ssl
+        web_package: httpd
+        web_service: httpd
+
+    - name: Include Configure Web
+      include:
+        configure_web.yml
+      vars:
+        https_uri: http://materials.example.com/task_control/https.conf
+        ssl_uri: http://materials.example.com/task_control/ssl.tar.gz
