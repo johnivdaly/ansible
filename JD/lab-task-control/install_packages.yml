@@ -1,0 +1,21 @@
+---
+- name: Install {{ web_package }}
+  yum:
+    name: "{{ web_package }}"
+    state: latest
+  tags:
+    - server
+  
+- name: Install {{ ssl_package }}
+  yum:
+    name: "{{ ssl_package }}"
+    state: latest
+  tags:
+    - server
+
+- name: Start {{ ssl_service }}
+  service:
+    name: "{{ ssl_service }}"
+    state: running
+  tags:
+    - server
