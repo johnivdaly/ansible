@@ -8,6 +8,6 @@
   with_items: "{{ myenv_packages }}"
 
 - name: Deploy Profile Picture
-      copy:
-        src: "{{ profile_src }}"
-        dest: "{{ profile_dest }}"
+    copy:
+      src: "{{ profile_src }}"
+      dest: "{{ profile_dest }}"
