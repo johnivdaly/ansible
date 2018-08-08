@@ -18,10 +18,10 @@
     - name: Install the database server
       yum:
         name: "{{ db_package }}"
-        when: db_package is defined
+      when: db_package is defined
   
     - name: Configure the database software
-      include: configure_database.yml
+      include: tasks/configure_database.yml
       vars:
         extra_packages:
           - mariadb-bench
