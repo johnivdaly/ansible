@@ -20,12 +20,12 @@
           yum:
             name: "{{ web_package }}"
             state: latest
+          failed_when: web_package == "httpd"
       rescue:
         - name: Install {{ db_package }} package
           yum:
             name: "{{ db_package }}"
             state: latest
-          failed_when: web_package == "httpd"
       always:
         - name: Start {{ db_service }} service
           service:
