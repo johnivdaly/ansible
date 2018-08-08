@@ -1,7 +1,0 @@
----
-- name: Get Web Package is Installed
-  command: "yum list installed {{ web_package }}"
-  register: command_result
-  debug:
-    var: command_result["stdout"]
-  failed_when: command_result == 1    
