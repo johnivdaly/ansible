@@ -6,6 +6,14 @@
     db_service: mariadb
 
   tasks:
+    - name: Check local time
+      command: date
+      register: command_result
+    
+    - name: Print local time
+      debug:
+        var: command_result["stdout"]
+
     - block:
         - name: Install {{ web_package }} package
           yum:
