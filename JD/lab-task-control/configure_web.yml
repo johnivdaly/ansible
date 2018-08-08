@@ -1,21 +1,7 @@
 ---
-- block:
-    - name: Get {{ web_package }} is Installed
-      command: "yum list installed {{ web_package }}"
-      register: command_result
-      debug:
-        var: command_result["stdout"]
-      failed_when: command_result == 1    
-
-    #- name: Download main.cf configuration
-      #get_url:
-        #url: http://materials.example.com/task_control/main.cf
-        #dest: /etc/postfix/main.cf
-        #tags:
-          #- server
-  notify:
-    #- restart_postfix
-  
-  rescue:
-
-  always:
+- name: Get Web Package is Installed
+  command: "yum list installed {{ web_package }}"
+  register: command_result
+  debug:
+    var: command_result["stdout"]
+  failed_when: command_result == 1    
