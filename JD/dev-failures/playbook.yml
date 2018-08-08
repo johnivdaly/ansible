@@ -1,7 +1,7 @@
 ---
 - hosts: databases
   vars:
-    web_package: http
+    web_package: httpd
     db_package: mariadb-server
     db_service: mariadb
 
