@@ -6,13 +6,18 @@
     db_service: mariadb
 
   tasks:
-    - name: Install {{ web_package }} package
-      yum:
-        name: "{{ web_package }}"
-        state: latest
-      ignore_errors: yes
-
-    - name: Install {{ db_package }} package
-      yum:
-        name: "{{ db_package }}"
-        state: latest
+    - block:
+        - name: Install {{ web_package }} package
+          yum:
+            name: "{{ web_package }}"
+            state: latest
+      rescue:
+        - name: Install {{ db_package }} package
+          yum:
+            name: "{{ db_package }}"
+            state: latest
+      always:
+        - name: Start {{ db_service }} service
+          service:
+            name: "{{ db_service }}"
+            state: started
