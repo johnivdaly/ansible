@@ -1,21 +1,16 @@
 ---
-- name: Install {{ web_package }}
+- name: Install Packages
   yum:
-    name: "{{ web_package }}"
+    name: "{{ item }}"
     state: latest
-  tags:
-    - server
-  
-- name: Install {{ ssl_package }}
-  yum:
-    name: "{{ ssl_package }}"
-    state: latest
-  tags:
-    - server
+  with_items:
+    - "{{ web_package }}"
+    - "{{ ssl_package }}"
+  when:
+    - inventory_hostname in groups["webservers"]
+    - "(ansible_memory_mb.real.total) > (memory)"
 
-- name: Start {{ ssl_service }}
+- name: Start {{ web_service }}
   service:
-    name: "{{ ssl_service }}"
+    name: "{{ web_service }}"
     state: running
-  tags:
-    - server
