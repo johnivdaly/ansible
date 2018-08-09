@@ -29,23 +29,23 @@
     ignore_errors: true
     when: pageupgrade.changed
 
-- name: wait for webserver to restart
-  wait_for:
-    host: "{{ inventory_hostname }}"
-    port: 22
-    state: started
-    delay: 80
-    timeout: 200
-  become: False
-  delegate_to: 127.0.0.1
-  when: pageupgrade.changed
+  - name: wait for webserver to restart
+    wait_for:
+      host: "{{ inventory_hostname }}"
+      port: 22
+      state: started
+      delay: 80
+      timeout: 200
+    become: False
+    delegate_to: 127.0.0.1
+    when: pageupgrade.changed
 
   - name: wait for webserver to come up
-  wait_for:
-    host: "{{ inventory_hostname }}"
-    port: 80
-    state: started
-    timeout: 20
+    wait_for:
+      host: "{{ inventory_hostname }}"
+      port: 80
+      state: started
+      timeout: 20
 
   - name: enable the server in haproxy
     haproxy:
