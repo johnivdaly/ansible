@@ -15,8 +15,8 @@
 
   - name: run longfiles script
     command: "/usr/local/bin/longfiles {{ item }} /tmp/{{ item }}.file"
-      async: 110
-      poll: 0
+    async: 110
+    poll: 0
     with_items:
       - foo
       - bar
